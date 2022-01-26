@@ -11,8 +11,14 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 #add a library
 add_subdirectory(Adder)
-target_link_libraries(${PROJECT_NAME} adder)
 
+#add glfw
+add_subdirectory(external/glfw)
+
+target_link_libraries(${PROJECT_NAME} 
+    adder 
+    glfw3
+)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
