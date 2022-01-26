@@ -15,9 +15,13 @@ add_subdirectory(Adder)
 #add glfw
 add_subdirectory(external/glfw)
 
+# add OpenGL
+find_package(OpenGL REQUIRED)
+
 target_link_libraries(${PROJECT_NAME} 
     adder 
-    glfw3
+    glfw
+    OpenGL::GL
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
