@@ -7,6 +7,8 @@
 #include "external/glfw/include/GLFW/glfw3.h"
 #include <openssl/sha.h>
 
+#include "cpp-learnConfig.h"
+
 using namespace std;
 
 int emptyGLFWWindow()
@@ -56,12 +58,18 @@ string sha256(const string str)
     return ss.str();
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    cout << sha256("1234567890_1") << endl;
-    cout << sha256("1234567890_2") << endl;
-    cout << sha256("1234567890_3") << endl;
-    cout << sha256("1234567890_4") << endl;
+    // Version example
+    cout << "Running " << argv[0] << " Version " << cpp_learn_VERSION_MAJOR << "." << cpp_learn_VERSION_MINOR << "\n";
+
+    // SHA256 example
+    // cout << sha256("1234567890_1") << endl;
+    // cout << sha256("1234567890_2") << endl;
+    // cout << sha256("1234567890_3") << endl;
+    // cout << sha256("1234567890_4") << endl;
+
+    // GLFW example
     // emptyGLFWWindow();
     return 0;
 }
