@@ -1,2 +1,4 @@
 #define cpp_learn_VERSION_MAJOR @cpp-learn_VERSION_MAJOR@
 #define cpp_learn_VERSION_MINOR @cpp-learn_VERSION_MINOR@
+
+#cmakedefine USE_ADDER

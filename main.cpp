@@ -3,11 +3,14 @@
 #include <sstream>
 #include <iomanip>
 
-#include "Adder/adder.h"
 #include "external/glfw/include/GLFW/glfw3.h"
 #include <openssl/sha.h>
 
 #include "cpp-learnConfig.h"
+
+#ifdef USE_ADDER
+#include "Adder/adder.h"
+#endif
 
 using namespace std;
 
@@ -71,5 +74,14 @@ int main(int argc, char *argv[])
 
     // GLFW example
     // emptyGLFWWindow();
+
+    // cmake option example
+
+#ifdef USE_ADDER
+    cout << "Adder being used"
+         << "\n";
+    cout << add(71.2f, 15.5f) << "\n";
+#endif
+
     return 0;
 }

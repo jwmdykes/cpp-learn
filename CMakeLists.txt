@@ -4,9 +4,15 @@ cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_TOOLCHAIN_FILE "./vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 project(cpp-learn VERSION 0.1.0)
-configure_file(cpp-learnConfig.h.in cpp-learnConfig.h)
 include(CTest)
 enable_testing()
+
+#add a library depending on option
+option(USE_ADDER "A simple library for adding 2 floats." ON)
+if(USE_ADDER)
+    add_subdirectory(Adder)
+    list(APPEND EXTRA_LIBS adder)
+endif()
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -15,22 +21,17 @@ target_include_directories(
     ${PROJECT_NAME} PUBLIC
     ${PROJECT_BINARY_DIR}
 )
-
-#add a library depending on option
-option(USE_ADDER "A simple library for adding 2 floats." ON)
-if(USE_ADDER)
-    add_subdirectory(Adder)
-endif()
+configure_file(cpp-learnConfig.h.in cpp-learnConfig.h)
 
 add_subdirectory(external/glfw)
 find_package(OpenGL REQUIRED)
 find_package(OpenSSL REQUIRED)
 target_link_libraries(${PROJECT_NAME} 
-    adder 
     glfw
     OpenGL::GL
     OpenSSL::SSL
     OpenSSL::Crypto
+    ${EXTRA_LIBS}
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
