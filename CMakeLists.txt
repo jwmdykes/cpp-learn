@@ -26,11 +26,14 @@ configure_file(cpp-learnConfig.h.in cpp-learnConfig.h)
 add_subdirectory(external/glfw)
 find_package(OpenGL REQUIRED)
 find_package(OpenSSL REQUIRED)
+find_package(GLEW REQUIRED)
+
 target_link_libraries(${PROJECT_NAME} 
     glfw
     OpenGL::GL
     OpenSSL::SSL
     OpenSSL::Crypto
+    GLEW::GLEW
     ${EXTRA_LIBS}
 )
 
