@@ -18,10 +18,14 @@ add_subdirectory(external/glfw)
 # add OpenGL
 find_package(OpenGL REQUIRED)
 
+# add OpenSSL
+find_package(OpenSSL REQUIRED)
 target_link_libraries(${PROJECT_NAME} 
     adder 
     glfw
     OpenGL::GL
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
