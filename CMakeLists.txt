@@ -34,6 +34,9 @@ target_link_libraries(${PROJECT_NAME}
     ${EXTRA_LIBS}
 )
 
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/cpp-learnConfig.h" DESTINATION include)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

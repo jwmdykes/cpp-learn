@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     // cout << sha256("1234567890_4") << endl;
 
     // GLFW example
-    // emptyGLFWWindow();
+    emptyGLFWWindow();
 
     // cmake option example
 
